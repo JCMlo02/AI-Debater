@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500&family=JetBrains+Mono:wght@400;600&display=swap');
+
+@import "tailwindcss";
+
+/* ── Design tokens (replaces tailwind.config.js in v4) ──────────────── */
+@theme {
+  /* Colors */
+  --color-void:    #0a0a0f;
+  --color-ink:     #12121a;
+  --color-ink2:    #1c1c28;
+  --color-paper:   #e8e8f0;
+  --color-muted:   #7070a0;
+  --color-human:   #e8c547;
+  --color-ai:      #47c5e8;
+  --color-danger:  #e85547;
+
+  /* Fonts */
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body:    "DM Sans", system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono", "Fira Code", monospace;
+
+  /* Animations */
+  --animate-pulse-dot: pulseDot 1.2s ease-in-out infinite;
+  --animate-grow-bar:  growBar 0.8s cubic-bezier(0.4,0,0.2,1) forwards;
+  --animate-fade-up:   fadeUp 0.4s ease forwards;
+
+  /* Keyframes */
+  @keyframes pulseDot {
+    0%, 100% { opacity: 0.3; transform: scale(0.85); }
+    50%       { opacity: 1;   transform: scale(1.1); }
+  }
+  @keyframes growBar {
+    from { width: 0%; }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+}
+
+/* ── Base resets ─────────────────────────────────────────────────────── */
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-void);
+    color: var(--color-paper);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::-webkit-scrollbar        { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track  { background: transparent; }
+  ::-webkit-scrollbar-thumb  { background: rgba(255,255,255,0.1); border-radius: 9999px; }
+}
+
+/* ── Reusable component classes ──────────────────────────────────────── */
+@layer components {
+
+  .btn-primary {
+    @apply font-mono text-[0.8rem] tracking-wide font-bold
+           bg-human text-void px-5 py-2.5 rounded-lg
+           transition-all duration-150
+           disabled:opacity-40 disabled:cursor-not-allowed
+           hover:brightness-110 hover:-translate-y-px active:translate-y-0;
+  }
+
+  .btn-ghost {
+    @apply font-mono text-[0.75rem] tracking-wide cursor-pointer
+           bg-transparent text-muted border border-white/10 px-4 py-2 rounded-lg
+           transition-all duration-150
+           hover:text-paper hover:border-white/25;
+  }
+
+  .field-input {
+    @apply w-full bg-white/4 border border-white/8 rounded-xl
+           text-paper font-body text-[0.95rem] px-4 py-3
+           placeholder:text-muted outline-none
+           transition-colors duration-200
+           focus:border-human/40 focus:ring-2 focus:ring-human/10;
+  }
+
+  .field-label {
+    @apply font-mono text-[0.65rem] tracking-[0.1em] uppercase text-muted block mb-1.5;
+  }
+
+  .card {
+    @apply bg-ink border border-white/7 rounded-2xl p-8;
+  }
+
+  .auth-input {
+    @apply w-full bg-white/4 border border-white/8 rounded-xl
+           text-paper font-body text-[0.94rem] px-4 py-3
+           placeholder:text-muted outline-none
+           transition-colors duration-200
+           focus:border-human/40;
+  }
+
+  .bubble-human {
+    @apply bg-human/10 border border-human/20 rounded-xl rounded-br-sm
+           text-yellow-100 text-[0.93rem] leading-relaxed px-5 py-4;
+  }
+
+  .bubble-ai {
+    @apply bg-ai/8 border border-ai/18 rounded-xl rounded-bl-sm
+           text-cyan-100 text-[0.93rem] leading-relaxed px-5 py-4;
+  }
+
+  .tag-human { @apply font-mono text-[0.62rem] tracking-[0.12em] uppercase text-human; }
+  .tag-ai    { @apply font-mono text-[0.62rem] tracking-[0.12em] uppercase text-ai; }
+
+  .seg-btn {
+    @apply font-mono text-[0.75rem] px-4 py-2 text-muted
+           transition-colors duration-150 hover:text-paper cursor-pointer;
+  }
+  .seg-btn-active {
+    @apply bg-human text-void font-bold;
+  }
+
+  .score-bar-fill-human {
+    height: 100%;
+    background-color: var(--color-human);
+    border-radius: 9999px;
+    animation: growBar 0.8s cubic-bezier(0.4,0,0.2,1) forwards;
+  }
+  .score-bar-fill-ai {
+    height: 100%;
+    background-color: var(--color-ai);
+    border-radius: 9999px;
+    animation: growBar 0.8s cubic-bezier(0.4,0,0.2,1) forwards;
+  }
+}
