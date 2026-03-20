@@ -41,7 +41,7 @@ const steps = [
     num: 4,
     Icon: Scale,
     title: "Verdict",
-    desc: "An AI judge rules the arena",
+    desc: "An AI judge determines the winner",
   },
 ];
 
@@ -365,7 +365,7 @@ export default function HomePage() {
             style={{ width: "fit-content" }}
           >
             <Sparkles size={18} />
-            Enter the Arena
+            Start Debating
           </Link>
           <Link
             href="/login"

@@ -113,7 +113,7 @@ export default function DashboardPage() {
               letterSpacing: "0.05em",
             }}
           >
-            Loading arena...
+            Loading Dashboard...
           </span>
         </div>
       </div>
@@ -309,7 +309,7 @@ export default function DashboardPage() {
                 ? `${stats.totalDebates} topic${
                     stats.totalDebates !== 1 ? "s" : ""
                   } debated · ${winRate}% win rate`
-                : "Ready to enter the arena?"}
+                : "Ready to argue?"}
             </p>
           </div>
 

@@ -530,7 +530,7 @@ export default function NewDebateModal({ onClose }: NewDebateModalProps) {
               </>
             ) : (
               <>
-                <Swords size={18} /> Enter the Arena
+                <Swords size={18} /> Start Debating
               </>
             )}
           </button>

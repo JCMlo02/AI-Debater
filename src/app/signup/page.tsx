@@ -78,7 +78,7 @@ export default function SignUpPage() {
         <div className="mb-6 text-center">
           <h1 className="text-3xl font-black text-white">Create account</h1>
           <p className="mt-1 text-sm text-white/50">
-            Join the arena. It&apos;s free.
+            Join, It&apos;s free.
           </p>
         </div>
 

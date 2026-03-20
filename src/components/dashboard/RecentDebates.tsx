@@ -64,7 +64,7 @@ export default function RecentDebates({ debates }: RecentDebatesProps) {
             letterSpacing: "0.05em",
           }}
         >
-          No completed debates yet — enter the arena ⚔️
+          No completed debates yet  ⚔️
         </div>
       ) : (
         <div>
