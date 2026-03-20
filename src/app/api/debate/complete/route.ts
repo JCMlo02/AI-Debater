@@ -51,14 +51,19 @@ export async function POST(req: NextRequest) {
       typeof judgment.userScore === "number"
         ? judgment.userScore
         : debate.rounds.reduce(
-            (s: number, r) => s + (r.userRoundScore ?? 0),
+            (s: number, r: { userRoundScore: number | null }) =>
+              s + (r.userRoundScore ?? 0),
             0
           );
 
     const aiTotal =
       typeof judgment.aiScore === "number"
         ? judgment.aiScore
-        : debate.rounds.reduce((s: number, r) => s + (r.aiRoundScore ?? 0), 0);
+        : debate.rounds.reduce(
+            (s: number, r: { aiRoundScore: number | null }) =>
+              s + (r.aiRoundScore ?? 0),
+            0
+          );
 
     let result: string;
     if (userTotal > aiTotal) result = "win";
