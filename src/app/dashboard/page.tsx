@@ -281,7 +281,7 @@ export default function DashboardPage() {
                 marginBottom: 6,
               }}
             >
-              Arena Dashboard
+              {" "}
             </p>
             <h1
               style={{
@@ -332,6 +332,7 @@ export default function DashboardPage() {
         </div>
 
         {/* Stats Grid */}
+        {/* Stats Grid */}
         <div
           className={`db-fade d2 ${visible ? "in" : ""}`}
           style={{ marginBottom: 32 }}
@@ -371,36 +372,18 @@ export default function DashboardPage() {
               },
               {
                 label: "Avg Score",
-                value: (stats?.avgScore ?? 0).toFixed(1),
+                value: stats?.avgScore ?? 0,
                 Icon: BarChart3,
                 accent: "#a78bfa",
               },
             ].map(({ label, value, Icon, accent }) => (
-              <div key={label} className="stat-tile">
-                <Icon size={18} style={{ color: accent }} />
-                <p
-                  style={{
-                    fontSize: "1.8rem",
-                    fontWeight: 800,
-                    letterSpacing: "-0.02em",
-                    color: "#fff",
-                    lineHeight: 1,
-                  }}
-                >
-                  {value}
-                </p>
-                <p
-                  style={{
-                    fontFamily: "var(--font-space-mono), monospace",
-                    fontSize: "0.65rem",
-                    color: "rgba(255,255,255,0.35)",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.1em",
-                  }}
-                >
-                  {label}
-                </p>
-              </div>
+              <StatsCard
+                key={label}
+                label={label}
+                value={value}
+                Icon={Icon}
+                accent={accent}
+              />
             ))}
           </div>
         </div>
