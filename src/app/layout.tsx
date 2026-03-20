@@ -28,7 +28,7 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "iDebate – Debate the AI",
+  title: "iDebate – Debate with AI",
   description:
     "Think you can out-argue a robot? Step into the arena and find out!",
 };
