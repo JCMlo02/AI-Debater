@@ -19,10 +19,30 @@ import {
 } from "lucide-react";
 
 const steps = [
-  { num: 1, Icon: Dices, title: "Random Topic", desc: "You never know what you'll get" },
-  { num: 2, Icon: Swords, title: "Make Your Case", desc: "Argue your side hard" },
-  { num: 3, Icon: Bot, title: "AI Fights Back", desc: "It doesn't go easy on you" },
-  { num: 4, Icon: Scale, title: "Verdict", desc: "An AI judge rules the arena" },
+  {
+    num: 1,
+    Icon: Dices,
+    title: "Random Topic",
+    desc: "You never know what you'll get",
+  },
+  {
+    num: 2,
+    Icon: Swords,
+    title: "Make Your Case",
+    desc: "Argue your side hard",
+  },
+  {
+    num: 3,
+    Icon: Bot,
+    title: "AI Fights Back",
+    desc: "It doesn't go easy on you",
+  },
+  {
+    num: 4,
+    Icon: Scale,
+    title: "Verdict",
+    desc: "An AI judge rules the arena",
+  },
 ];
 
 const taunts = [
@@ -235,15 +255,31 @@ export default function HomePage() {
         {/* Orbs */}
         <div
           className="glow-orb"
-          style={{ width: 500, height: 500, background: "rgba(0,114,255,0.12)", top: -150, left: "50%", transform: "translateX(-50%)" }}
+          style={{
+            width: 500,
+            height: 500,
+            background: "rgba(0,114,255,0.12)",
+            top: -150,
+            left: "50%",
+            transform: "translateX(-50%)",
+          }}
         />
         <div
           className="glow-orb"
-          style={{ width: 300, height: 300, background: "rgba(255,50,50,0.07)", top: 200, right: "10%" }}
+          style={{
+            width: 300,
+            height: 300,
+            background: "rgba(255,50,50,0.07)",
+            top: 200,
+            right: "10%",
+          }}
         />
 
         {/* VS badge */}
-        <div className={`vs-badge fade-in d1 ${visible ? "visible" : ""}`} style={{ marginBottom: 28 }}>
+        <div
+          className={`vs-badge fade-in d1 ${visible ? "visible" : ""}`}
+          style={{ marginBottom: 28 }}
+        >
           <Flame size={13} />
           You vs. AI · Who wins?
         </div>
@@ -251,7 +287,12 @@ export default function HomePage() {
         {/* Heading */}
         <div
           className={`fade-in d2 ${visible ? "visible" : ""}`}
-          style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 12 }}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 16,
+            marginBottom: 12,
+          }}
         >
           <Image
             src="/images/iDebateLogo.png"
@@ -270,7 +311,8 @@ export default function HomePage() {
               fontWeight: 800,
               lineHeight: 1.0,
               letterSpacing: "-0.03em",
-              background: "linear-gradient(135deg, #ffffff 30%, rgba(255,255,255,0.5))",
+              background:
+                "linear-gradient(135deg, #ffffff 30%, rgba(255,255,255,0.5))",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
             }}
@@ -281,7 +323,12 @@ export default function HomePage() {
 
         <p
           className={`fade-in d3 ${visible ? "visible" : ""}`}
-          style={{ fontSize: "1.4rem", fontWeight: 600, color: "rgba(255,255,255,0.85)", marginBottom: 8 }}
+          style={{
+            fontSize: "1.4rem",
+            fontWeight: 600,
+            color: "rgba(255,255,255,0.85)",
+            marginBottom: 8,
+          }}
         >
           Think you can out-argue an AI?
         </p>
@@ -304,13 +351,27 @@ export default function HomePage() {
         {/* CTAs */}
         <div
           className={`cta-row fade-in d4 ${visible ? "visible" : ""}`}
-          style={{ display: "flex", gap: 12, marginBottom: 48, flexWrap: "wrap", justifyContent: "center" }}
+          style={{
+            display: "flex",
+            gap: 12,
+            marginBottom: 48,
+            flexWrap: "wrap",
+            justifyContent: "center",
+          }}
         >
-          <Link href="/signup" className="glow-btn" style={{ width: "fit-content" }}>
+          <Link
+            href="/signup"
+            className="glow-btn"
+            style={{ width: "fit-content" }}
+          >
             <Sparkles size={18} />
             Enter the Arena
           </Link>
-          <Link href="/login" className="ghost-btn" style={{ width: "fit-content" }}>
+          <Link
+            href="/login"
+            className="ghost-btn"
+            style={{ width: "fit-content" }}
+          >
             Log In
             <ArrowRight size={16} />
           </Link>
@@ -326,7 +387,15 @@ export default function HomePage() {
             gap: 6,
           }}
         >
-          <span style={{ fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "0.12em", color: "rgba(255,255,255,0.25)", fontWeight: 700 }}>
+          <span
+            style={{
+              fontSize: "0.7rem",
+              textTransform: "uppercase",
+              letterSpacing: "0.12em",
+              color: "rgba(255,255,255,0.25)",
+              fontWeight: 700,
+            }}
+          >
             Topics you might face
           </span>
           <p key={topicIdx} className="topic-ticker">
@@ -335,7 +404,13 @@ export default function HomePage() {
         </div>
 
         {/* Scroll hint */}
-        <div style={{ marginTop: 60, color: "rgba(255,255,255,0.2)", animation: "swapIn 1s ease 1.5s both" }}>
+        <div
+          style={{
+            marginTop: 60,
+            color: "rgba(255,255,255,0.2)",
+            animation: "swapIn 1s ease 1.5s both",
+          }}
+        >
           <ChevronDown size={20} />
         </div>
       </section>
@@ -356,7 +431,7 @@ export default function HomePage() {
         {[
           { val: "1v1", label: "You vs AI" },
           { val: "∞", label: "Topics" },
-          { val: "3", label: "Rounds" },
+          { val: "5/10", label: "Rounds" },
           { val: "AI", label: "Impartial Judge" },
         ].map((s, i) => (
           <div
@@ -372,20 +447,55 @@ export default function HomePage() {
               borderRight: i < 3 ? "1px solid rgba(255,255,255,0.06)" : "none",
             }}
           >
-            <span style={{ fontSize: "1.9rem", fontWeight: 800, color: "#fff", letterSpacing: "-0.02em" }}>{s.val}</span>
-            <span style={{ fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "rgba(255,255,255,0.35)", fontWeight: 600 }}>{s.label}</span>
+            <span
+              style={{
+                fontSize: "1.9rem",
+                fontWeight: 800,
+                color: "#fff",
+                letterSpacing: "-0.02em",
+              }}
+            >
+              {s.val}
+            </span>
+            <span
+              style={{
+                fontSize: "0.7rem",
+                textTransform: "uppercase",
+                letterSpacing: "0.1em",
+                color: "rgba(255,255,255,0.35)",
+                fontWeight: 600,
+              }}
+            >
+              {s.label}
+            </span>
           </div>
         ))}
       </section>
 
       {/* ── HOW IT WORKS ── */}
-      <section style={{ padding: "80px 24px", maxWidth: 760, margin: "0 auto" }}>
-        <p style={{ textAlign: "center", fontSize: "0.7rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.15em", color: "rgba(255,255,255,0.3)", marginBottom: 40 }}>
+      <section
+        style={{ padding: "80px 24px", maxWidth: 760, margin: "0 auto" }}
+      >
+        <p
+          style={{
+            textAlign: "center",
+            fontSize: "0.7rem",
+            fontWeight: 700,
+            textTransform: "uppercase",
+            letterSpacing: "0.15em",
+            color: "rgba(255,255,255,0.3)",
+            marginBottom: 40,
+          }}
+        >
           How It Works
         </p>
         <div
           className="steps-grid"
-          style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16 }}
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(4, 1fr)",
+            gap: 16,
+          }}
         >
           {steps.map((step) => (
             <div key={step.num} className="step-card">
@@ -407,8 +517,25 @@ export default function HomePage() {
               </span>
               <step.Icon size={26} style={{ color: "rgba(255,255,255,0.6)" }} />
               <div style={{ textAlign: "center" }}>
-                <p style={{ fontSize: "0.88rem", fontWeight: 700, color: "rgba(255,255,255,0.9)" }}>{step.title}</p>
-                <p style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.35)", marginTop: 4, lineHeight: 1.4 }}>{step.desc}</p>
+                <p
+                  style={{
+                    fontSize: "0.88rem",
+                    fontWeight: 700,
+                    color: "rgba(255,255,255,0.9)",
+                  }}
+                >
+                  {step.title}
+                </p>
+                <p
+                  style={{
+                    fontSize: "0.75rem",
+                    color: "rgba(255,255,255,0.35)",
+                    marginTop: 4,
+                    lineHeight: 1.4,
+                  }}
+                >
+                  {step.desc}
+                </p>
               </div>
             </div>
           ))}
@@ -425,20 +552,53 @@ export default function HomePage() {
       >
         <div
           className="glow-orb"
-          style={{ width: 400, height: 200, background: "rgba(0,114,255,0.1)", bottom: 0, left: "50%", transform: "translateX(-50%)" }}
+          style={{
+            width: 400,
+            height: 200,
+            background: "rgba(0,114,255,0.1)",
+            bottom: 0,
+            left: "50%",
+            transform: "translateX(-50%)",
+          }}
         />
         <Trophy size={32} style={{ color: "#facc15", marginBottom: 16 }} />
-        <h2 style={{ fontSize: "2.2rem", fontWeight: 800, letterSpacing: "-0.02em", marginBottom: 12 }}>
+        <h2
+          style={{
+            fontSize: "2.2rem",
+            fontWeight: 800,
+            letterSpacing: "-0.02em",
+            marginBottom: 12,
+          }}
+        >
           Ready to prove yourself?
         </h2>
-        <p style={{ color: "rgba(255,255,255,0.4)", fontSize: "1rem", marginBottom: 32, maxWidth: 380, margin: "0 auto 32px" }}>
-          Free forever. No credit card. Just you, your arguments, and an AI that will not hold back.
+        <p
+          style={{
+            color: "rgba(255,255,255,0.4)",
+            fontSize: "1rem",
+            marginBottom: 32,
+            maxWidth: 380,
+            margin: "0 auto 32px",
+          }}
+        >
+          Free forever. No credit card. Just you, your arguments, and an AI that
+          will not hold back.
         </p>
-        <Link href="/signup" className="glow-btn" style={{ fontSize: "1.1rem", width: "fit-content" }}>
+        <Link
+          href="/signup"
+          className="glow-btn"
+          style={{ fontSize: "1.1rem", width: "fit-content" }}
+        >
           <Zap size={18} />
           Start Debating Free
         </Link>
-        <p style={{ marginTop: 16, fontSize: "0.75rem", color: "rgba(255,255,255,0.2)" }}>
+        <p
+          style={{
+            marginTop: 16,
+            fontSize: "0.75rem",
+            color: "rgba(255,255,255,0.2)",
+          }}
+        >
           Takes 30 seconds to set up
         </p>
       </section>
