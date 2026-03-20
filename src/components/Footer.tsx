@@ -159,7 +159,7 @@ export default function Footer() {
             </a>
             {" & "}
             <a
-              href="https://huggingface.co/Qwen/Qwen2.5-7B-Instruct"
+              href="https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct"
               target="_blank"
               rel="noopener noreferrer"
               className="footer-ext-link"
