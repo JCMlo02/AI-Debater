@@ -29,8 +29,7 @@ const spaceMono = Space_Mono({
 
 export const metadata: Metadata = {
   title: "iDebate – Debate with AI",
-  description:
-    "Think you can out-argue a robot? Step into the arena and find out!",
+  description: "Think you can out-argue a robot? Come and find out!",
 };
 
 export default function RootLayout({
