@@ -50,12 +50,15 @@ export async function POST(req: NextRequest) {
     const userTotal =
       typeof judgment.userScore === "number"
         ? judgment.userScore
-        : debate.rounds.reduce((s, r) => s + (r.userRoundScore ?? 0), 0);
+        : debate.rounds.reduce(
+            (s: number, r) => s + (r.userRoundScore ?? 0),
+            0
+          );
 
     const aiTotal =
       typeof judgment.aiScore === "number"
         ? judgment.aiScore
-        : debate.rounds.reduce((s, r) => s + (r.aiRoundScore ?? 0), 0);
+        : debate.rounds.reduce((s: number, r) => s + (r.aiRoundScore ?? 0), 0);
 
     let result: string;
     if (userTotal > aiTotal) result = "win";
