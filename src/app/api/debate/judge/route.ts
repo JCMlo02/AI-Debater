@@ -31,8 +31,8 @@ export async function POST(req: NextRequest) {
 
     const numberedRounds = rounds.map(
       (r: { humanArgument: string; aiArgument: string }, i: number) => ({
-        roundNumber: i + 1,
-        humanArgument: r.humanArgument,
+        round: i + 1,
+        userArgument: r.humanArgument,
         aiArgument: r.aiArgument,
       })
     );

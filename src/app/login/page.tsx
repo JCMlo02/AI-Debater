@@ -1,17 +1,24 @@
 "use client";
 
 import { useState, FormEvent } from "react";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { LogIn, Loader2, AlertCircle } from "lucide-react";
 
 export default function LoginPage() {
   const router = useRouter();
+  const { status } = useSession();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+
+  // Redirect if already logged in
+  if (status === "authenticated") {
+    router.replace("/dashboard");
+    return null;
+  }
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -28,7 +35,7 @@ export default function LoginPage() {
       if (res?.error) {
         setError("Invalid email or password.");
       } else {
-        router.push("/debate");
+        router.push("/dashboard");
         router.refresh();
       }
     } catch {
@@ -64,7 +71,7 @@ export default function LoginPage() {
         <div className="flex flex-col gap-2.5">
           <button
             type="button"
-            onClick={() => signIn("google", { callbackUrl: "/debate" })}
+            onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
             className="flex w-full items-center justify-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/[0.07] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
           >
             <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true">
@@ -77,7 +84,7 @@ export default function LoginPage() {
           </button>
           <button
             type="button"
-            onClick={() => signIn("github", { callbackUrl: "/debate" })}
+            onClick={() => signIn("github", { callbackUrl: "/dashboard" })}
             className="flex w-full items-center justify-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/[0.07] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
           >
             <svg viewBox="0 0 24 24" className="h-4 w-4 fill-white" aria-hidden="true">

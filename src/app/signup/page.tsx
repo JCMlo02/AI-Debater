@@ -1,13 +1,14 @@
 "use client";
 
 import { useState, FormEvent } from "react";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { UserPlus, Loader2, AlertCircle, Check } from "lucide-react";
 
 export default function SignUpPage() {
   const router = useRouter();
+  const { status } = useSession();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,6 +23,12 @@ export default function SignUpPage() {
   ];
 
   const allMet = checks.every((c) => c.met);
+
+  // Redirect if already logged in
+  if (status === "authenticated") {
+    router.replace("/dashboard");
+    return null;
+  }
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -54,7 +61,7 @@ export default function SignUpPage() {
       if (signInRes?.error) {
         router.push("/login");
       } else {
-        router.push("/debate");
+        router.push("/dashboard");
         router.refresh();
       }
     } catch {
@@ -90,7 +97,7 @@ export default function SignUpPage() {
         <div className="flex flex-col gap-2.5">
           <button
             type="button"
-            onClick={() => signIn("google", { callbackUrl: "/debate" })}
+            onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
             className="flex w-full items-center justify-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/[0.07] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
           >
             <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true">
@@ -115,7 +122,7 @@ export default function SignUpPage() {
           </button>
           <button
             type="button"
-            onClick={() => signIn("github", { callbackUrl: "/debate" })}
+            onClick={() => signIn("github", { callbackUrl: "/dashboard" })}
             className="flex w-full items-center justify-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/[0.07] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
           >
             <svg
