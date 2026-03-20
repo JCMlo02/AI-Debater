@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { judgeDebate } from "@/lib/huggingface";
+import { Round } from "../../../../types/types";
 
 export async function POST(req: NextRequest) {
   try {
@@ -38,7 +39,7 @@ export async function POST(req: NextRequest) {
     // Use your existing judgeDebate function
     const judgment = await judgeDebate(
       debate.topic,
-      debate.rounds.map((r) => ({
+      debate.rounds.map((r: Round) => ({
         round: r.roundNumber,
         userArgument: r.userArgument ?? "",
         aiArgument: r.aiArgument ?? "",
