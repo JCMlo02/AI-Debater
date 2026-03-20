@@ -561,7 +561,6 @@ export default function HomePage() {
             transform: "translateX(-50%)",
           }}
         />
-        <Trophy size={32} style={{ color: "#facc15", marginBottom: 16 }} />
         <h2
           style={{
             fontSize: "2.2rem",
