@@ -306,9 +306,9 @@ export default function DashboardPage() {
               }}
             >
               {stats?.totalDebates
-                ? `${stats.totalDebates} debate${
+                ? `${stats.totalDebates} topic${
                     stats.totalDebates !== 1 ? "s" : ""
-                  } fought · ${winRate}% win rate`
+                  } debated · ${winRate}% win rate`
                 : "Ready to enter the arena?"}
             </p>
           </div>
