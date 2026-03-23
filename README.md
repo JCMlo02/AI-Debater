@@ -1,5 +1,7 @@
 # AI-Debater
 
+[Live Site](https://iDebate.xyz)
+
 A web application for conducting human-vs-AI debates on diverse, auto-generated topics. Debates are turn-based and scored by an impartial AI judge.  
 **Key highlight:** The platform uses the Hugging Face Inference API to generate arguments and judge debates, while all state, roles, and debate flow are orchestrated in the server logic.
 
